@@ -20,6 +20,10 @@ export const getChatFileUploadUrl = async (fileName: string) => {
     Bucket: "chat",
     Key: `${fileName}`,
     Expires: 60,
+    Fields: {
+      "Content-Type": "application/octet-stream",
+      "Cache-Control": "max-age=3600",
+    },
   });
   return presignedPost;
 };
